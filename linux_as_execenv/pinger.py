@@ -3,13 +3,19 @@ from datetime import datetime, timedelta
 
 url_template = "https://simurg.space/gen_file?data=obs&date={date}"
 
-now = datetime.now()
-date_str = now.strftime("%Y-%m-%d") 
-print(f"Current datetime is {now} and date {date_str}")
+current = datetime.now()
 
-url = url_template.format(date=date_str)
+while True:
+    current = current - timedelta(days=1)
+    date_str = current.strftime("%Y-%m-%d") 
+    print(f"Current datetime is {current} and date {date_str}")
 
-response = requests.get(url=url, stream=True)
-print(f"From url {url} got {response}")
+    url = url_template.format(date=date_str)
+
+    response = requests.get(url=url, stream=True)
+    print(f"From url {url} got {response}")
+    if response.status_code == 200:
+       print(f"Last available data are for {current}")
+       break
 
 
