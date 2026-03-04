@@ -4,7 +4,8 @@ sys.path.append("../src")
 
 from math_demo import (
     add,
-    add_with_bug
+    add_with_bug,
+    add_something
 )
 
 # [DONE] Ранее тестирование позволяет съэкономить время позднее
@@ -36,7 +37,35 @@ def test_addition_duplicated_logic():
     # good test since input and output are independent from add()
     assert add(6, 3) == 9 
     print("Test DUPLICATED LOGIC PASSED")
-    
+
+def test_addition_overcomplicated():
+    # would work but slow and not actually needed 
+    for i in range(0, 2**32):
+        for j in range(0, 2**32):
+            assert add(i, j) == i + j # bad since violates "duplication" 
+            assert add(-i, j) == -i + j
+            assert add(i, -j) == i - j
+            assert add(-i, -j) == -i - j
+
+def test_addition_resonable():
+    assert add(6, 3) == 9 
+    assert add(0, 3) == 3
+    assert add(0, -3) == -3 
+    assert add(-7, 83) == 76 
+    assert add(-7, -83) == -90
+    print("Test ADDITION with REASONABLE NUMBER of CASES PASSED ")
+
+
+def test_add_something_reasonable():
+    add_something(6, 3) == 9
+    add_something(None, None) == 0
+    add_something(None, "abc") == 0
+    add_something(None, 10) == 0
+    add_something("abc", 10) == "abc10"
+    add_something(10, "abc") == "10abc" # what if operation is not commutative
+    add_something("xyz", "abc") == "xyzabc"
+    print("Test ANOTHER ADDITION with REASONABLE NUMBER of CASES PASSED ")
+
 
 
 if __name__ == "__main__":
@@ -44,4 +73,7 @@ if __name__ == "__main__":
     test_bug_addition_notsufficient()
     test_addition_duplicated_logic()
     test_bug_addition_enough()
+    test_add_something_reasonable()
+    test_addition_resonable()
+
     
