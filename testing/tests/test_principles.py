@@ -6,7 +6,8 @@ from math_demo import (
     add,
     add_with_bug,
     add_something,
-    calulcate_tax_with_bug
+    calulcate_tax_with_bug,
+    calulcate_tax
 )
 
 # [DONE] Ранее тестирование позволяет съэкономить время позднее
@@ -73,6 +74,16 @@ def test_tax_calculation():
     assert calulcate_tax_with_bug(2000) == 300.
     assert calulcate_tax_with_bug(30) == 4.5
     assert calulcate_tax_with_bug(1) == .15
+    #assert calulcate_tax_with_bug(1.7) == .25 will fail here
+
+def test_tax_calculation_fight_pecticdes():
+    #using only integers doesn't allow test all cases
+    assert calulcate_tax(1000) == 150.
+    assert calulcate_tax(2000) == 300.
+    assert calulcate_tax(30) == 4.5
+    assert calulcate_tax(1) == .15
+    assert calulcate_tax(1.7) == .25
+    print("Test TAX CALCULATION (FIGHT PECTICIDES)")
     
     
     print("Test TAX CALCULATION PASSED")
@@ -85,5 +96,6 @@ if __name__ == "__main__":
     test_add_something_reasonable()
     test_addition_resonable()
     test_tax_calculation()
+    test_tax_calculation_fight_pecticdes()
 
     

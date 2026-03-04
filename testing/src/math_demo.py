@@ -14,3 +14,6 @@ def add_something(a, b):
 
 def calulcate_tax_with_bug(income):
     return income * 0.15
+
+def calulcate_tax(income):
+    return int(income * 0.15 * 100) / 100.
