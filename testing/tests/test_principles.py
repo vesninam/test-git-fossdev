@@ -5,7 +5,8 @@ sys.path.append("../src")
 from math_demo import (
     add,
     add_with_bug,
-    add_something
+    add_something,
+    calulcate_tax_with_bug
 )
 
 # [DONE] Ранее тестирование позволяет съэкономить время позднее
@@ -66,7 +67,15 @@ def test_add_something_reasonable():
     add_something("xyz", "abc") == "xyzabc"
     print("Test ANOTHER ADDITION with REASONABLE NUMBER of CASES PASSED ")
 
-
+def test_tax_calculation():
+    #using only integers doesn't allow test all cases
+    assert calulcate_tax_with_bug(1000) == 150.
+    assert calulcate_tax_with_bug(2000) == 300.
+    assert calulcate_tax_with_bug(30) == 4.5
+    assert calulcate_tax_with_bug(1) == .15
+    
+    
+    print("Test TAX CALCULATION PASSED")
 
 if __name__ == "__main__":
     test_addition_basic()
@@ -75,5 +84,6 @@ if __name__ == "__main__":
     test_bug_addition_enough()
     test_add_something_reasonable()
     test_addition_resonable()
+    test_tax_calculation()
 
     
