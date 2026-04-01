@@ -6,8 +6,16 @@ def _parse_record(line: str):
         return None  
     (product, category, price, amount) = sale
 
-    price = float(price)  
-    amount = int(amount)  # according to specs amount is not fractional
+    try:
+        price = float(price)  
+    except ValueError:
+        return None
+    try:
+        amount = int(amount)  # according to specs amount is not fractional
+        if amount != int(amount):
+            return None
+    except ValueError:
+        return None
 
     return {"product": product, "category": category, "price": price, "amount": amount} 
 
