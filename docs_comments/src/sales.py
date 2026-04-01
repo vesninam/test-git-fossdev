@@ -1,6 +1,15 @@
 # TODO refactor this module using buisness logic names
 
-def _parse_record(line: str):
+
+def _parse_record(line: str) -> dict | None:
+    """Parse data from one sale record.
+
+    Parameters:
+        line: record on one sale that come from file
+    
+    Returns:
+        Data of one sale in form of dict or None if validation fails
+    """
     sale = line.strip().split(",") 
     if len(sale) != 4:  # according to specs each line must have 4 columns
         return None  
@@ -10,10 +19,12 @@ def _parse_record(line: str):
         price = float(price)  
     except ValueError:
         return None
+    
     try:
         amount = int(amount)  # according to specs amount is not fractional
         if amount != int(amount):
             return None
+        
     except ValueError:
         return None
 
