@@ -18,6 +18,9 @@ documentation for details.
    QUICKSTART
    USAGE
 
+.. include:: ../DOMAIN.md
+   :parser: myst_parser.sphinx_
+
 
 
 
