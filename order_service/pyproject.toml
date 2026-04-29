@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "order-service"
+version = "0.1.0"
+description = "Application that service user order request"
+authors = ["Artem Vesnin <artemvesnin@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "app", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.136.1"
+uvicorn = "^0.46.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
